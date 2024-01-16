@@ -24,5 +24,6 @@ export default defineConfig({
     coverage: {
       exclude: ['src/main.ts'],
     },
+    environment: 'happy-dom',
   },
 })
