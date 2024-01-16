@@ -14,7 +14,17 @@ Create DOM elements with a Vue-like syntax
 
 ## Installation
 
-No documentation yet
+The recommended installation method is via NPM.
+
+```bash
+npm install @bedard/h
+```
+
+Alternatively, this library maybe be accessed via a CDN.
+
+```html
+<script src="https://unpkg.com/@bedard/h"></script>
+```
 
 ## Basic usage
 
