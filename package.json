@@ -8,7 +8,8 @@
     "@types/node": "^20.11.4",
     "typescript": "^5.3.3",
     "vite": "^5.0.11",
-    "vite-plugin-dts": "^3.7.1"
+    "vite-plugin-dts": "^3.7.1",
+    "vitest": "^1.2.0"
   },
   "homepage": "https://github.com/scottbedard/h#readme",
   "license": "MIT",
@@ -23,7 +24,7 @@
     "build": "tsc && vite build",
     "dev": "vite",
     "preview": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "unpkg": "dist/index.iife.js",
   "version": "1.0.0"
