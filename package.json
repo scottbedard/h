@@ -27,6 +27,7 @@
     "preview": "vite preview",
     "test": "vitest"
   },
+  "type": "module",
   "unpkg": "dist/index.iife.js",
   "version": "1.0.0"
 }
