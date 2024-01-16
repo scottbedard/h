@@ -23,8 +23,8 @@ type Props = null | {
  */
 export function h<T extends keyof HTMLElementTagNameMap>(
   tagName: T,
-  propsOrChildren: Props | HTMLElement[] | string | null = null,
-  children: HTMLElement[] | string = [],
+  propsOrChildren: Props | (HTMLElement | string)[] | string | null = null,
+  children: (HTMLElement | string)[] | string = [],
 ): HTMLElementTagNameMap[T] {
   const el = document.createElement(tagName)
 
@@ -41,7 +41,9 @@ export function h<T extends keyof HTMLElementTagNameMap>(
   if (typeof normalChildren === 'string') {
     el.textContent = normalChildren
   } else {
-    normalChildren.forEach(child => el.appendChild(child))
+    normalChildren.forEach(child => {
+      el.appendChild(typeof child === 'string' ? document.createTextNode(child) : child)
+    })
   }
 
   if (props.class) {

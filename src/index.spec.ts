@@ -42,6 +42,12 @@ describe('h', () => {
     expect('<div>foo</div>').toBe(parent.outerHTML)
   })
 
+  it('accepts string in array of children', () => {
+    const parent = h('div', null, [h('div', 'foo'), 'bar'])
+
+    expect('<div><div>foo</div>bar</div>').toBe(parent.outerHTML)
+  })
+
   it('binds class attribute', () => {
     const div = h('div', { class: 'foo bar' })
 
