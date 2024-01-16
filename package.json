@@ -5,12 +5,14 @@
   },
   "description": "Create DOM elements with a Vue-like syntax",
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.11.4",
     "@vitest/coverage-v8": "^1.2.0",
     "happy-dom": "^13.1.4",
+    "rollup-plugin-delete": "^2.0.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.3.3",
-    "vite": "^5.0.11",
-    "vite-plugin-dts": "^3.7.1",
     "vitest": "^1.2.0"
   },
   "homepage": "https://github.com/scottbedard/h#readme",
@@ -23,9 +25,7 @@
     "url": "git+https://github.com/scottbedard/h.git"
   },
   "scripts": {
-    "build": "tsc && vite build",
-    "dev": "vite",
-    "preview": "vite preview",
+    "build": "rollup -c",
     "test": "vitest"
   },
   "type": "module",

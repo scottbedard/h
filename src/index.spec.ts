@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, it, vi } from 'vitest'
-import { h } from './lib'
+import { h } from './index'
 
 describe('h', () => {
   it('creates elements with text content', () => {

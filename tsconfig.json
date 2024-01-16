@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "esModuleInterop": true,
     "lib": ["esnext", "dom", "dom.iterable"],
     "module": "esnext",
     "moduleResolution": "bundler",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
+    // "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "useDefineForClassFields": true
   },
   "exclude": [
     "dist",
@@ -21,7 +20,7 @@
     "scripts",
   ],
   "include": [
-    "rollup.config.ts",
+    "rollup.config.mjs",
     "src/**/*.ts",
   ],
 }
