@@ -1,0 +1,29 @@
+{
+  "author": "Scott Bedard",
+  "bugs": {
+    "url": "https://github.com/scottbedard/h/issues"
+  },
+  "description": "Create DOM elements with a Vue-like syntax",
+  "devDependencies": {
+    "@types/node": "^20.11.4",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
+  },
+  "homepage": "https://github.com/scottbedard/h#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs.js",
+  "name": "@bedard/h",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottbedard/h.git"
+  },
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "unpkg": "dist/index.iife.js",
+  "version": "1.0.0"
+}
