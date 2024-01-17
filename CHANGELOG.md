@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.2.0
+
+- Add support for nested class bindings
+
 # 0.1.0
 
 It can be tough to see, but sometimes we don't need a rendering framework.
