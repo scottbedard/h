@@ -51,8 +51,7 @@ h('div', 'hello')
 // children may also be a mixed array of child items
 h('div', ['hello', h('span', 'world')])
 
-// event listeners use an `onEventName` syntax
-// typescript will infer the event type from the method name
+// listeners use an `onEvent` naming convention, typescript will infer the event type
 h('button', { onClick: handler })
 ```
 
