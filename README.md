@@ -28,7 +28,7 @@ Alternatively, this library maybe be accessed via a CDN.
 
 ## Basic usage
 
-The first argument is the element tag name. The second argument is the props to be passed, and the third argument is the children. For convenience, the props argument can be omitted when an element has no attributes or event listeners. Below are some basic examples.
+The first argument is the element tag name, next are props, and finally the children. For convenience, the props argument may be omitted when an element has no attributes or event listeners.
 
 ```ts
 import { h } from '@bedard/h'
