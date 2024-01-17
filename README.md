@@ -18,10 +18,6 @@ h('button', { id: 'foo', onClick: handler }, 'Hello world')
 // <button id="foo">Hello world</button>
 ```
 
-- [Installation](#installation)
-- [Basic usage](#basic-usage)
-- [License](#license)
-
 ## Installation
 
 The recommended installation method is via NPM.
