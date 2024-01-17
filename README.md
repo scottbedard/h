@@ -42,9 +42,6 @@ import { h } from '@bedard/h'
 // all arguments except the tag name are optional
 h('div')
 
-// event listeners should be passed as onEventName callbacks
-h('div', { onClick: () => {} })
-
 // children may be a string, number, or element
 h('div', null, 'hello')
 
@@ -53,6 +50,10 @@ h('div', 'hello')
 
 // children may also be a mixed array of child items
 h('div', ['hello', h('span', 'world')])
+
+// event listeners use an `onEventName` syntax
+// typescript will infer the event type from the method name
+h('button', { onClick: handler })
 ```
 
 ## License
