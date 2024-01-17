@@ -6,7 +6,17 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@bedard/h?label=gzipped&style=flat-square)](https://bundlephobia.com/result?p=@bedard/h)
 [![License](https://img.shields.io/github/license/scottbedard/h?color=blue&style=flat-square)](https://github.com/scottbedard/h/blob/main/LICENSE)
 
-Create DOM elements with a [Vue-like syntax](https://vuejs.org/api/render-function.html#h)
+It can be tough to see, but sometimes we don't need a rendering framework.
+
+Virtual doms are amazing, but in some situations they can be overkill. The goal here is to close that gap with a utility that resembles Vue's [`h`](https://vuejs.org/api/render-function.html#h) function, allowing for easy construction of dom trees and event listeners.
+
+```ts
+import { h } from '@bedard/h'
+
+h('button', { id: 'foo', onClick: handler }, 'Hello world')
+
+// <button id="foo">Hello world</button>
+```
 
 - [Installation](#installation)
 - [Basic usage](#basic-usage)
