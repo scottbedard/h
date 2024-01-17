@@ -1,6 +1,6 @@
 # `@bedard/h`
 
-[![Build status](https://img.shields.io/github/actions/workflow/status/scottbedard/h/test.yml?branch=main)](https://github.com/scottbedard/h/actions)
+[![Build status](https://img.shields.io/github/actions/workflow/status/scottbedard/h/test.yml?branch=main&style=flat-square)](https://github.com/scottbedard/h/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/scottbedard/h?token=Dj9EytYQgk&style=flat-square)](https://codecov.io/gh/scottbedard/h)
 [![NPM](https://img.shields.io/npm/v/%40bedard%2Fh?style=flat-square)](https://www.npmjs.com/package/@bedard/h)
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@bedard/h?label=gzipped&style=flat-square)](https://bundlephobia.com/result?p=@bedard/h)
