@@ -7,7 +7,7 @@ import typescript from '@rollup/plugin-typescript'
 export default defineConfig({
   input: 'src/index.ts',
   external: 'dependencies' in pkg ? Object.keys(pkg.devDependencies) : [],
-	output: [
+  output: [
     {
       file: pkg.main,
       format: 'cjs',
