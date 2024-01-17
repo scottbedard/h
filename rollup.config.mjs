@@ -5,7 +5,7 @@ import terser from '@rollup/plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 
 export default defineConfig({
-	input: 'src/index.ts',
+  input: 'src/index.ts',
   external: 'dependencies' in pkg ? Object.keys(pkg.devDependencies) : [],
 	output: [
     {
