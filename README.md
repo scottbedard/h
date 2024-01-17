@@ -6,7 +6,7 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@bedard/h?label=gzipped&style=flat-square)](https://bundlephobia.com/result?p=@bedard/h)
 [![License](https://img.shields.io/github/license/scottbedard/h?color=blue&style=flat-square)](https://github.com/scottbedard/h/blob/main/LICENSE)
 
-Create DOM elements using a [Vue-like syntax](https://vuejs.org/api/render-function.html#h)
+Create DOM elements with a [Vue-like syntax](https://vuejs.org/api/render-function.html#h)
 
 - [Installation](#installation)
 - [Basic usage](#basic-usage)
