@@ -1,5 +1,9 @@
 type Child = string | number | HTMLElement
 
+type ClassBinding = Record<string, any> | string
+
+type MaybeArray<T> = T | T[]
+
 type EventListeners = Partial<{
   [T in `on${Capitalize<keyof HTMLElementEventMap>}`]: T extends `on${infer U}`
     ? (e: Lowercase<U> extends keyof HTMLElementEventMap
@@ -10,7 +14,7 @@ type EventListeners = Partial<{
 
 type Props = null | {
   [key: string]: any
-  class?: string
+  class?: MaybeArray<ClassBinding>
   style?: Partial<CSSStyleDeclaration>
 } & EventListeners
 
@@ -24,7 +28,7 @@ type Props = null | {
 export function h<T extends keyof HTMLElementTagNameMap>(
   tagName: T,
   propsOrChildren: Props | Child | Child[] | null = null,
-  children?: Child[] | Child,
+  children?: MaybeArray<Child>,
 ): HTMLElementTagNameMap[T] {
   const el = document.createElement(tagName)
 
@@ -51,7 +55,7 @@ export function h<T extends keyof HTMLElementTagNameMap>(
   })
 
   if (_props.class) {
-    el.className = _props.class
+    bindClasses(el, _props.class)
   } else if (_props.style) {
     Object.entries(_props.style).forEach(([key, value]) => {
       const prop = key
@@ -74,6 +78,20 @@ export function h<T extends keyof HTMLElementTagNameMap>(
   }
 
   return el
+}
+
+function bindClasses(el: Element, binding: ClassBinding) {
+  if (typeof binding === 'string') {
+    el.classList.add(binding)
+  } else if (Array.isArray(binding)) {
+    binding.forEach(value => bindClasses(el, value))
+  } else {
+    Object.entries(binding).forEach(([key, value]) => {
+      if (value) {
+        el.classList.add(key)
+      }
+    })
+  }
 }
 
 export const version = 'x.y.z'
