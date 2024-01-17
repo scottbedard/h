@@ -36,17 +36,17 @@ import { h } from '@bedard/h'
 // all arguments except the tag name are optional
 h('div')
 
-// event listeners should be passed as onXxx
+// event listeners should be passed as onEventName callbacks
 h('div', { onClick: () => {} })
 
-// children can be a string
-h('div', { ... }, 'hello')
+// children may be a string, number, or element
+h('div', null, 'hello')
 
-// props can be omitted when there are only children
+// props may be omitted when there are only children
 h('div', 'hello')
 
-// children array can contain mixed elements and strings
-h('div', ['hello', h('span', 'hello')])
+// children may also be a mixed array of child items
+h('div', ['hello', h('span', 'world')])
 ```
 
 ## License

@@ -36,10 +36,16 @@ describe('h', () => {
     expect('<div>foo</div>').toBe(parent.outerHTML)
   })
 
-  it('accepts child string as children', () => {
+  it('accepts string as children', () => {
     const parent = h('div', null, 'foo')
 
     expect('<div>foo</div>').toBe(parent.outerHTML)
+  })
+
+  it('accepts number as children', () => {
+    const parent = h('div', null, 42)
+
+    expect('<div>42</div>').toBe(parent.outerHTML)
   })
 
   it('accepts string in array of children', () => {

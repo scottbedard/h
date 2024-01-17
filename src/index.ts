@@ -1,6 +1,5 @@
-/**
- * Event listeners
- */
+type Child = string | number | HTMLElement
+
 type EventListeners = Partial<{
   [T in `on${Capitalize<keyof HTMLElementEventMap>}`]: T extends `on${infer U}`
     ? (e: Lowercase<U> extends keyof HTMLElementEventMap
@@ -9,9 +8,6 @@ type EventListeners = Partial<{
     : false
 }>
 
-/**
- * Props
- */
 type Props = null | {
   [key: string]: any
   class?: string
@@ -20,36 +16,44 @@ type Props = null | {
 
 /**
  * Render dom elements
+ *
+ * @param tagName - HTML tag name of the element
+ * @param propsOrChildren - Element props or children
+ * @param children - Element children
  */
 export function h<T extends keyof HTMLElementTagNameMap>(
   tagName: T,
-  propsOrChildren: Props | (HTMLElement | string)[] | string | null = null,
-  children: (HTMLElement | string)[] | string = [],
+  propsOrChildren: Props | Child | Child[] | null = null,
+  children?: Child[] | Child,
 ): HTMLElementTagNameMap[T] {
   const el = document.createElement(tagName)
 
-  const props = typeof propsOrChildren === 'string' || propsOrChildren === null || Array.isArray(propsOrChildren)
-    ? {}
-    : propsOrChildren
+  const _props = (
+    !propsOrChildren
+    || propsOrChildren instanceof Element
+    || typeof propsOrChildren === 'string'
+    || typeof propsOrChildren === 'number'
+    || Array.isArray(propsOrChildren)
+  ) ? {} : propsOrChildren
 
-  const normalChildren = typeof propsOrChildren === 'string'
-    ? propsOrChildren
+  const _children = (propsOrChildren instanceof Element || typeof propsOrChildren === 'string' || typeof propsOrChildren === 'number')
+    ? [propsOrChildren]
     : Array.isArray(propsOrChildren)
       ? propsOrChildren
-      : children
+      : (children instanceof Element || typeof children === 'string' || typeof children === 'number')
+        ? [children]
+        : Array.isArray(children)
+          ? children
+          : []
 
-  if (typeof normalChildren === 'string') {
-    el.textContent = normalChildren
-  } else {
-    normalChildren.forEach(child => {
-      el.appendChild(typeof child === 'string' ? document.createTextNode(child) : child)
-    })
-  }
+  _children.forEach(child => {
+    el.appendChild(child instanceof Element ? child : document.createTextNode(String(child)))
+  })
 
-  if (props.class) {
-    el.className = props.class
-  } else if (props.style) {
-    Object.entries(props.style).forEach(([key, value]) => {
+  if (_props.class) {
+    el.className = _props.class
+  } else if (_props.style) {
+    Object.entries(_props.style).forEach(([key, value]) => {
       const prop = key
         .replace(/([a-z])([A-Z])/g, "$1-$2")
         .replace(/[\s_]+/g, '-')
@@ -58,7 +62,7 @@ export function h<T extends keyof HTMLElementTagNameMap>(
       el.style.setProperty(prop, String(value))
     })
   } else {
-    Object.entries(props).forEach(([key, value]) => {
+    Object.entries(_props).forEach(([key, value]) => {
       const eventParts = key.match(/^on([A-Z][A-Za-z]+)$/)
 
       if (Array.isArray(eventParts)) {
@@ -71,3 +75,5 @@ export function h<T extends keyof HTMLElementTagNameMap>(
 
   return el
 }
+
+export const version = 'x.y.z'
