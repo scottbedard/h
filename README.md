@@ -26,7 +26,7 @@ The recommended installation method is via NPM.
 npm install @bedard/h
 ```
 
-Alternatively, this library maybe be accessed via a CDN.
+Alternatively, this library may be accessed via a CDN.
 
 ```html
 <script src="https://unpkg.com/@bedard/h"></script>
