@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.3.0
+
+- Add `svg` utility
+
 # 0.2.0
 
 - Add support for nested class bindings
