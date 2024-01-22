@@ -6,9 +6,7 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/@bedard/h?label=gzipped&style=flat-square)](https://bundlephobia.com/result?p=@bedard/h)
 [![License](https://img.shields.io/github/license/scottbedard/h?color=blue&style=flat-square)](https://github.com/scottbedard/h/blob/main/LICENSE)
 
-It may be tough to admit, but sometimes we don't need rendering frameworks.
-
-Virtual doms are amazing, but in simple situations they can be overkill. The goal here is to close that gap with a utility that resembles Vue's [`h`](https://vuejs.org/api/render-function.html#h) function, allowing for easy construction of dom trees and event listeners.
+Element builder to mirror Vue's [`h`](https://vuejs.org/api/render-function.html#h) function. Typescript will infer the element properties and event listeners based on names.
 
 ```ts
 import { h } from '@bedard/h'
@@ -39,20 +37,25 @@ The first argument is the element tag name, next are props, and finally the chil
 ```ts
 import { h } from '@bedard/h'
 
-// all arguments except the tag name are optional
+// create elements by tag name
 h('div')
 
-// children may be a string, number, or element
-h('div', null, 'hello')
+// plain text can be provided as child data
+h('div', 'Hello world')
 
-// props may be omitted when there are only children
-h('div', 'hello')
+// child data may also be an array of text and elements
+h('div', ['Hello', h('span', 'world')])
 
-// children may also be a mixed array of child items
-h('div', ['hello', h('span', 'world')])
+// attach props and listeners with `onEvent` names, typescript will infer the event type
+h('button', { type: 'submit', onClick: handler }, 'Click here')
+```
 
-// listeners use an `onEvent` naming convention, typescript will infer the event type
-h('button', { onClick: handler })
+Use `svg` to create `http://www.w3.org/2000/svg` namespace elements
+
+```ts
+import { svg } from '@bedard/h'
+
+svg('circle', { fill: 'red' })
 ```
 
 ## License
