@@ -1,12 +1,19 @@
 import { describe, expect, expectTypeOf, it, vi } from 'vitest'
-import { h } from './index'
+import { h, svg } from './index'
 
-describe('h', () => {
+describe('h, svg', () => {
   describe('elements', () => {
-    it('creates elements with text content', () => {
+    it('create html element', () => {
       const div = h('div', 'Hello world')
 
       expect(div.outerHTML).toBe('<div>Hello world</div>')
+    })
+
+    it('create svg element', () => {
+      const circle = svg('circle')
+
+      expect(circle).toBeInstanceOf(SVGElement)
+      expect(circle.tagName).toBe('CIRCLE')
     })
 
     it('infers element type', () => {

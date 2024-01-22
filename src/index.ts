@@ -18,13 +18,7 @@ type Props = null | {
   style?: Partial<CSSStyleDeclaration>
 } & EventListeners
 
-/**
- * Render dom elements
- *
- * @param tagName - HTML tag name of the element
- * @param propsOrChildren - Element props or children
- * @param children - Element children
- */
+// create element functions
 export function h<T extends keyof HTMLElementTagNameMap>(
   tagName: T,
   propsOrChildren: Props | Child | Child[] | null = null,
@@ -32,6 +26,25 @@ export function h<T extends keyof HTMLElementTagNameMap>(
 ): HTMLElementTagNameMap[T] {
   const el = document.createElement(tagName)
 
+  return bind(el, propsOrChildren, children)
+}
+
+export function svg<T extends keyof SVGElementTagNameMap>(
+  tagName: T,
+  propsOrChildren: Props | Child | Child[] | null = null,
+  children?: MaybeArray<Child>,
+): SVGElementTagNameMap[T] {
+  const el = document.createElementNS<T>('http://www.w3.org/2000/svg', tagName)
+
+  return bind(el, propsOrChildren, children)
+}
+
+// bind props and children to element
+function bind<T extends Element>(
+  el: T,
+  propsOrChildren: Props | Child | Child[] | null = null,
+  children?: MaybeArray<Child>,
+): T {
   const _props = (
     !propsOrChildren
     || propsOrChildren instanceof Element
@@ -56,7 +69,7 @@ export function h<T extends keyof HTMLElementTagNameMap>(
 
   if (_props.class) {
     bindClasses(el, _props.class)
-  } else if (_props.style) {
+  } else if (_props.style && el instanceof HTMLElement) {
     Object.entries(_props.style).forEach(([key, value]) => {
       const prop = key
         .replace(/([a-z])([A-Z])/g, "$1-$2")
@@ -80,6 +93,7 @@ export function h<T extends keyof HTMLElementTagNameMap>(
   return el
 }
 
+// bind element classes
 function bindClasses(el: Element, binding: ClassBinding) {
   if (typeof binding === 'string') {
     el.classList.add(binding)
@@ -94,4 +108,5 @@ function bindClasses(el: Element, binding: ClassBinding) {
   }
 }
 
+// version watermark
 export const version = 'x.y.z'
