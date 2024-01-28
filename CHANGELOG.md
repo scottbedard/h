@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.3.1
+
+- Fix attribute binding of falsey values
+
 # 0.3.0
 
 - Add `svg` utility
