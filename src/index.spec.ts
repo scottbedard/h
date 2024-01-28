@@ -69,6 +69,12 @@ describe('h, svg', () => {
 
       expect(div.outerHTML).toBe('<div foobar="baz"></div>')
     })
+
+    it('doesnt bind falsey attributes', () => {
+      const div = h('div', { foo: false })
+
+      expect(div.outerHTML).toBe('<div></div>')
+    })
   })
 
   describe('class bindings', () => {
