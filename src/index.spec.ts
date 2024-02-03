@@ -70,10 +70,34 @@ describe('h, svg', () => {
       expect(div.outerHTML).toBe('<div foobar="baz"></div>')
     })
 
-    it('doesnt bind falsey attributes', () => {
-      const div = h('div', { foo: false })
+    it('doesnt bind null', () => {
+      const div = h('div', { foo: null })
 
       expect(div.outerHTML).toBe('<div></div>')
+    })
+
+    it('doesnt bind undefined', () => {
+      const div = h('div', { foo: undefined })
+
+      expect(div.outerHTML).toBe('<div></div>')
+    })
+
+    it('binds boolean true', () => {
+      const div = h('div', { foo: true })
+
+      expect(div.outerHTML).toBe('<div foo="true"></div>')
+    })
+
+    it('binds boolean false', () => {
+      const div = h('div', { foo: false })
+
+      expect(div.outerHTML).toBe('<div foo="false"></div>')
+    })
+
+    it('binds zero', () => {
+      const div = h('div', { foo: 0 })
+
+      expect(div.outerHTML).toBe('<div foo="0"></div>')
     })
   })
 

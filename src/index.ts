@@ -84,7 +84,7 @@ function bind<T extends Element>(
 
       if (Array.isArray(eventParts)) {
         el.addEventListener(eventParts[1].toLowerCase(), value)
-      } else if (value) {
+      } else if (value !== null && value !== undefined) {
         el.setAttribute(key.toLowerCase(), String(value))
       }
     })
