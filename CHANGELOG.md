@@ -1,5 +1,9 @@
 # Changelog
 
+# 0.3.2
+
+- Fix attribute bindings for `null` and `undefined`. All other values will preserve their dom attribute.
+
 # 0.3.1
 
 - Fix attribute binding of falsey values
